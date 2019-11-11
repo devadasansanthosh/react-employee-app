@@ -9,6 +9,7 @@ const empList = props => (
             <div className="col">{emp.department.name}</div>
             <div className="col">
             <button className="btn btn-secondary" onClick={() => {props.editRow(emp)}}>Update</button>
+            <button className="btn btn-secondary" onClick={() => {props.deleteHandler(emp)}}>Delete</button>
             </div>
           </div>
     ))}

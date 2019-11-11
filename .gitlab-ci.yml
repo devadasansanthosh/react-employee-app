@@ -1,0 +1,26 @@
+image: node:latest
+stages:
+  - build
+  - test
+  - deploy
+
+cache:
+  paths:
+  - node_modules/
+
+build:
+  stage: build
+  script:
+    - npm install
+    - npm run-script build
+
+test:
+  stage: test
+  script:
+    - echo "Running react test suite......"
+
+deploy:
+  stage: deploy
+  script:
+    - cf login -u $PWS_ACCESS_KEY_ID -p $PWS_SECRET_ACCESS_KEY -a api.run.pivotal.io
+    - cf push employee-react
